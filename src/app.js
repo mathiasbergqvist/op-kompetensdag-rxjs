@@ -1,3 +1,4 @@
+require("./style.css");
 const Rx = require('rxjs/Rx');
 
 // ########### Input stream

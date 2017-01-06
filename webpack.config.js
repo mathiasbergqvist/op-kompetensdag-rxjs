@@ -20,6 +20,10 @@ module.exports = {
                 query: {
                     presets: ['es2015-native-modules']
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader"
             }
         ]
     },
