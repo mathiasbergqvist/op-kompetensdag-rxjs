@@ -17,7 +17,7 @@ const wookieInputStream$ = Rx.Observable.fromEvent(wookieCounter, 'input')
 
 const scoreStream$ = Rx.Observable.combineLatest(
     stormtrooperInputStream$.startWith(40),
-    wookieInputStream$.startWith(10),
+    wookieInputStream$.startWith(5),
     (stormtrooperCount, wookieCount) => {
         const stormtrooperScore = stormtrooperCount * 0.7;
         const wookieScore = wookieCount * 1.3;
@@ -55,7 +55,7 @@ scoreStream$.subscribe(score => {
     wookieAmount.textContent = `#${wookieCount}`;
     wookieCounter.value = score.wookieCount;
     jediScoreHolder.textContent = `Jedi score: ${jediScore}`;
-    jediVerdictHolder.textContent = `Jedi verdict: ${jediVerdict}`;
+    jediVerdictHolder.textContent = `Jedi verdict: "${jediVerdict}"`;
 });
 
 

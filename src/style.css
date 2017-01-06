@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    padding: 20px;
+    padding: 30px;
 }
 
 #main-image{
@@ -8,6 +8,11 @@ body {
     height: 168px;
     background-image: url('../public/img/star_wars_logo.png');
     margin-bottom: 20px;
+}
+
+fieldset {
+    width: 40%;
+    margin: 40px 0 40px 0;
 }
 
 table {
