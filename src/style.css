@@ -3,6 +3,13 @@ body {
     padding: 20px;
 }
 
+#main-image{
+    width: 551px;
+    height: 168px;
+    background-image: url('../public/img/star_wars_logo.png');
+    margin-bottom: 20px;
+}
+
 table {
     width: 30%;
 }
