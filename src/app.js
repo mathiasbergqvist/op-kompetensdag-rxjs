@@ -13,19 +13,21 @@ const stormtrooperInputStream$ = Rx.Observable.fromEvent(stormtrooperCounter, 'i
 const wookieInputStream$ = Rx.Observable.fromEvent(wookieCounter, 'input')
         .map(event => event.target.value);
 
+const scoreStream$ = Rx.Observable.combineLatest(
+    stormtrooperInputStream$.startWith(40),
+    wookieInputStream$.startWith(10),
+    (stormtrooperCount, wookieCount) => {
+        const stormtrooperScore = stormtrooperCount * 0.7;
+        const wookieScore = wookieCount * 1.3;
+        const jediScore = stormtrooperScore - wookieScore;
+        return {stormtrooperScore, wookieScore, jediScore};
+    }
+)
 
-stormtrooperInputStream$.subscribe(input => console.log("Stormtroopers XXX", input));
-wookieInputStream$.subscribe(input => console.log("Wookies XXX", input));
+scoreStream$.subscribe(score => {
+    console.log("scores", score)
+});
 
-// const userInput = document.querySelector('#user-input');
-// const label = document.querySelector('#label');
-//
-// const userInputStream$ = Rx.Observable.fromEvent(userInput, 'input')
-//         .map(event => event.target.value.toUpperCase()).startWith('');
-//
-// userInputStream$.subscribe(input => {
-//     label.textContent = `Input: ${input}`;
-// });
 
 // ########### Promise stream ###########
 const postsPromise = fetch('http://swapi.co/api/people/')
