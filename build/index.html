@@ -10,8 +10,35 @@
         <input id="user-input" type="text">
         <p id="label"></p>
         <div class="container">
-            <h3>Film tips</h3>
-            <ul class="films">
+            <h3>Must-see movies!</h3>
+            <table>
+                <colgroup span="3"></colgroup>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Director</th>
+                        <th>Release Date</th>
+                    </tr>
+                </thead>
+                <tbody class="films">
+                    <tr class="suggestion1">
+                        <th class="title"></th>
+                        <th class="director"></th>
+                        <th class="release-date"></th>
+                    </tr>
+                    <tr class="suggestion2">
+                        <th class="title"></th>
+                        <th class="director"></th>
+                        <th class="release-date"></th>
+                    </tr>
+                    <tr class="suggestion3">
+                        <th class="title"></th>
+                        <th class="director"></th>
+                        <th class="release-date"></th>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<ul class="films">
                 <li class="suggestion1">
                     <p class="title"></p>
                     <p class="director"></p>
@@ -27,7 +54,7 @@
                     <p class="director"></p>
                     <p class="release-date"></p>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </div>
     <script src="bundle.js"></script>
