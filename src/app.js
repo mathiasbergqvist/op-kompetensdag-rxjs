@@ -13,7 +13,7 @@ userInputStream$.subscribe(input => {
 });
 
 // ########### Promise stream ###########
-const postsPromise = fetch('http://swapi.co/api/films/')
+const postsPromise = fetch('http://swapi.co/api/people/')
     .then(data => data.json())
     .catch(err => console.error(err));
 
@@ -21,39 +21,42 @@ const responseStream$ = Rx.Observable.fromPromise(postsPromise)
     .map(data => data.results);
 
 function createSuggestions(responseStream){
-    return responseStream.map(films =>
-        films[Math.floor(Math.random()*films.length)]
+    return responseStream.map(heroes =>
+        heroes[Math.floor(Math.random()*heroes.length)]
     );
 }
 
-function renderSuggestion(filmData, selector){
-    const element = document.querySelector(selector);
-    const title = element.querySelector('.title');
-    const director = element.querySelector('.director');
-    const releaseDate = element.querySelector('.release-date');
+function renderSuggestion(heroData, selector){
 
-    title.textContent = filmData.title;
-    director.textContent = filmData.director;
-    releaseDate.textContent = filmData.release_date;
+    const element = document.querySelector(selector);
+    const name = element.querySelector('.name');
+    const birthYear = element.querySelector('.birth-year');
+    const gender = element.querySelector('.gender');
+    const skinColor = element.querySelector('.skin-color');
+    const hairColor = element.querySelector('.hair-color');
+
+    name.textContent = heroData.name;
+    birthYear.textContent = heroData.birth_year;
+    gender.textContent = heroData.gender;
+    skinColor.textContent = heroData.skin_color;
+    hairColor.textContent = heroData.hair_color;
 }
 
 const suggestion1Stream$ = createSuggestions(responseStream$);
 const suggestion2Stream$ = createSuggestions(responseStream$);
 const suggestion3Stream$ = createSuggestions(responseStream$);
 
-suggestion1Stream$.subscribe(film => {
-    renderSuggestion(film, '.suggestion1');
+suggestion1Stream$.subscribe(hero => {
+    renderSuggestion(hero, '.suggestion1');
 });
 
-suggestion2Stream$.subscribe(film => {
-    renderSuggestion(film, '.suggestion2');
+suggestion2Stream$.subscribe(hero => {
+    renderSuggestion(hero, '.suggestion2');
 });
 
-suggestion3Stream$.subscribe(film => {
-    renderSuggestion(film, '.suggestion3');
+suggestion3Stream$.subscribe(hero => {
+    renderSuggestion(hero, '.suggestion3');
 });
-
-responseStream$.subscribe(data => console.log(data), err => console.error(err));
 
 
 

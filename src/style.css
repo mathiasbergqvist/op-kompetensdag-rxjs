@@ -2,3 +2,19 @@ body {
     font-family: sans-serif;
     padding: 20px;
 }
+
+table {
+    width: 30%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+caption {
+    font-size: 120%;
+    font-weight: bold;
+    padding: 5px;
+}
