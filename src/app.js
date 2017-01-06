@@ -1,8 +1,13 @@
 const Rx = require('rxjs/Rx');
 
-var source = Rx.Observable.interval(400).take(6)
-    .map(i => ['1', '1', '13', '27', 'foo', 'bar'][i]);
+// ########### Input stream
+const userInput = document.querySelector('#user-input');
+const label = document.querySelector('#label');
 
-var result = source;
+const userInputStream$ = Rx.Observable.fromEvent(userInput, 'input')
+    .map(event => event.target.value.toUpperCase()).startWith('');
 
-result.subscribe(x => console.log(x));
+userInputStream$.subscribe(input => {
+    label.textContent = `Input: ${input}`;
+});
+
