@@ -1,16 +1,31 @@
 require("./style.css");
 const Rx = require('rxjs/Rx');
 
-// ########### Event stream ########### 
-const userInput = document.querySelector('#user-input');
-const label = document.querySelector('#label');
+// ########### Event stream ###########
+const stormtrooperCounter = document.querySelector('#stormtrooper-counter');
+const wookieCounter = document.querySelector('#wookie-counter');
+const jediScore = document.querySelector('#jedi-score');
+const jediVerdict = document.querySelector('#jedi-verdict');
 
-const userInputStream$ = Rx.Observable.fromEvent(userInput, 'input')
-    .map(event => event.target.value.toUpperCase()).startWith('');
+const stormtrooperInputStream$ = Rx.Observable.fromEvent(stormtrooperCounter, 'input')
+    .map(event => event.target.value);
 
-userInputStream$.subscribe(input => {
-    label.textContent = `Input: ${input}`;
-});
+const wookieInputStream$ = Rx.Observable.fromEvent(wookieCounter, 'input')
+        .map(event => event.target.value);
+
+
+stormtrooperInputStream$.subscribe(input => console.log("Stormtroopers XXX", input));
+wookieInputStream$.subscribe(input => console.log("Wookies XXX", input));
+
+// const userInput = document.querySelector('#user-input');
+// const label = document.querySelector('#label');
+//
+// const userInputStream$ = Rx.Observable.fromEvent(userInput, 'input')
+//         .map(event => event.target.value.toUpperCase()).startWith('');
+//
+// userInputStream$.subscribe(input => {
+//     label.textContent = `Input: ${input}`;
+// });
 
 // ########### Promise stream ###########
 const postsPromise = fetch('http://swapi.co/api/people/')

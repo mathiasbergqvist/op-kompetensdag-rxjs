@@ -7,9 +7,18 @@
 <body>
     <div id="app">
         <div id="main-image"></div>
-        <input id="user-input" type="text">
-        <p id="label"></p>
         <div class="container">
+            <div id="hero-score">
+                <div>
+                    <label for="stormtrooper-counter">How many stormtroopers did you kill today?</label>
+                    <input id="stormtrooper-counter" type="range" min="0" max="100" value="0">
+                    <br>
+                    <label for="wookie-counter">How many wookies did you ACCIDENTALY kill today?</label>
+                    <input id="wookie-counter" type="range" min="0" max="100" value="0">
+                    <p id="jedi-score">Jedi score: </p>
+                    <p id="jedi-verdict">Jedi verdict: </p>
+                </div>
+            </div>
             <table>
                 <caption>Famous heroes of the galaxy!</caption>
                 <thead>
