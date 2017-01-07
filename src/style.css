@@ -11,12 +11,12 @@ body {
 }
 
 fieldset {
-    width: 40%;
+    width: 50%;
     margin: 40px 0 40px 0;
 }
 
 table {
-    width: 40%;
+    width: 50%;
 }
 
 table, th, td {
