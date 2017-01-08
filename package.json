@@ -20,6 +20,10 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "rxjs": "^5.0.2"
+    "@cycle/dom": "^14.3.0",
+    "@cycle/rxjs-run": "^3.3.0",
+    "@cycle/xstream-run": "^4.2.0",
+    "rxjs": "^5.0.3",
+    "xstream": "^9.3.0"
   }
 }
