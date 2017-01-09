@@ -1,51 +1,9 @@
 require("./style.css");
 const Rx = require('rxjs/Rx');
 import {run} from '@cycle/rxjs-run';
-import {makeDOMDriver, div, fieldset, legend, label, span, input, br, p} from '@cycle/dom';
+import {makeDOMDriver, div, fieldset, legend, label, span, br, p} from '@cycle/dom';
 import isolate from '@cycle/isolate';
-
-function intent(DOMSource) {
-    return DOMSource.select('.slider').events('input')
-        .map(event => event.target.value);
-}
-
-function model(newValue$, props$) {
-    const initialValue$ = props$
-        .map(props => props.init).first();
-    const value$ = initialValue$.concat(newValue$);
-    return Rx.Observable.combineLatest (
-        value$,
-        props$,
-        (value, props) => {
-            return {
-                label: props.label,
-                span: props.span,
-                min: props.min,
-                max: props.max,
-                value: value
-            }
-        });
-}
-
-function view(state$) {
-    return state$.map(state =>
-        div('.labeled-slider', [
-            div('.label', `${state.label}`),
-            span('.amount-span', `${state.span}${state.value}`),
-            input('.slider', {attrs: {type: "range", min: state.min, max: state.max, value: state.value}})
-        ])
-    );
-}
-
-function LabeledSlider(sources) {
-    const change$ = intent(sources.DOM);
-    const state$ = model(change$, sources.props);
-    const ui$ = view(state$);
-    return {
-        DOM: ui$,
-        value: state$.map(state => state.value)
-    };
-}
+import LabeledSlider from './LabeledSlider';
 
 const IsolatedLabeledSlider = function (sources) {
     return isolate(LabeledSlider)(sources);
