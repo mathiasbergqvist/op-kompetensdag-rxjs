@@ -1,20 +1,25 @@
 require("./style.css");
 const Rx = require('rxjs/Rx');
 import {run} from '@cycle/rxjs-run';
-import {makeDOMDriver, div, p} from '@cycle/dom';
+import {makeDOMDriver, div} from '@cycle/dom';
 import JediScoreboard from './JediScoreboard';
 import StormtrooperDeathCounter from './StormtrooperDeathCounter';
+import HeroesOfTheGalaxy from './HeroesOfTheGalaxy';
 
 function main(sources){
     const jediScoreBoard$ = JediScoreboard(sources).DOM;
     const stormTrooperDeathCounter$ = StormtrooperDeathCounter(sources).DOM;
+    const heroesOfTheGalaxy$ = HeroesOfTheGalaxy(sources).DOM;
+
     const main$ = Rx.Observable.combineLatest (
         jediScoreBoard$,
         stormTrooperDeathCounter$,
-        (jediScoreBoard, stormTrooperDeathCounter) =>
+        heroesOfTheGalaxy$,
+        (jediScoreBoard, stormTrooperDeathCounter, heroesOfTheGalaxy) =>
             div([
                 jediScoreBoard,
-                stormTrooperDeathCounter
+                stormTrooperDeathCounter,
+                heroesOfTheGalaxy
             ])
     );
 
