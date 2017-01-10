@@ -15,5 +15,3 @@ Project containing several components based on RxJS event streams. The `master` 
 
 ## Author
 Mathias Bergqvist, mathias.bergqvist@omegapoint.se
-
-
