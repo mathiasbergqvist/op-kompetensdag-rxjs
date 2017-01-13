@@ -17,6 +17,7 @@ fieldset {
 
 table {
     width: 50%;
+    margin-bottom: 5%;
 }
 
 table, th, td {

@@ -3,6 +3,7 @@ require('./basicStream');
 require('./JediScoreboard');
 require('./StormTrooperDeathCounter');
 require('./HeroesOfTheGalaxy');
+require('./PlanetsOfTheGalaxy');
 
 
 
