@@ -1,11 +1,12 @@
 const webpack = require('webpack');
+require("babel-polyfill");
 const nodeEnv = process.env.NODE_ENV || 'production';
 const path = require('path');
 const devServerPort = 9090;
 
 module.exports = {
     entry: {
-        app: path.resolve('./src/app.js')
+        app: [ 'babel-polyfill', path.resolve('./src/app.js') ]
     },
     output: {
         path: path.resolve('./build'),

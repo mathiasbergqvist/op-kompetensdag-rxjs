@@ -33,4 +33,3 @@ start$
     .subscribe((deathCount) => {
         counter.textContent = `Count: ${deathCount.count}`;
     });
-
