@@ -17,6 +17,7 @@ fieldset {
 
 table {
     width: 50%;
+    margin-bottom: 5%;
 }
 
 table, th, td {
@@ -30,3 +31,36 @@ caption {
     font-weight: bold;
     padding: 5px;
 }
+
+<<<<<<< Updated upstream
+.laser-game {
+    table-layout: fixed;
+}
+
+.laser-game td {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 150%;
+}
+=======
+.stars-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  z-index: -99;
+}
+
+.star {
+  position: fixed;
+  background: white;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  z-index: 99;
+}
+>>>>>>> Stashed changes

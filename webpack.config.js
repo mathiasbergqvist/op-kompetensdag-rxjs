@@ -1,16 +1,18 @@
 const webpack = require('webpack');
+require("babel-polyfill");
 const nodeEnv = process.env.NODE_ENV || 'production';
 const path = require('path');
 const devServerPort = 9090;
 
 module.exports = {
     entry: {
-        app: path.resolve('./src/app.js')
+        app: [ 'babel-polyfill', path.resolve('./src/app.js') ]
     },
     output: {
         path: path.resolve('./build'),
         filename: "bundle.js"
     },
+    devtool: "source-map",
     module: {
         loaders: [
             {
@@ -32,11 +34,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false},
-            output: {comments: false},
-            sourceMap: true
-        }),
         new webpack.DefinePlugin({
             'proccess.env': {NODE_ENV: JSON.stringify(nodeEnv)}
         })
