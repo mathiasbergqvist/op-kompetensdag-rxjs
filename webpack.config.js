@@ -11,6 +11,7 @@ module.exports = {
         path: path.resolve('./build'),
         filename: "bundle.js"
     },
+    devtool: "source-map",
     module: {
         loaders: [
             {
@@ -32,11 +33,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false},
-            output: {comments: false},
-            sourceMap: true
-        }),
         new webpack.DefinePlugin({
             'proccess.env': {NODE_ENV: JSON.stringify(nodeEnv)}
         })

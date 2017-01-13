@@ -4,6 +4,7 @@ require('./JediScoreboard');
 require('./StormTrooperDeathCounter');
 require('./HeroesOfTheGalaxy');
 require('./PlanetsOfTheGalaxy');
+require('./LaserGame');
 
 
 
