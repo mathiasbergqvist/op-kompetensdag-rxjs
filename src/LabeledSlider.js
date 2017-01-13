@@ -9,6 +9,7 @@ function intent(DOMSource) {
 function model(newValue$, props$) {
     const initialValue$ = props$
         .map(props => props.init).first();
+
     const value$ = initialValue$.concat(newValue$);
     return Rx.Observable.combineLatest (
         value$,
